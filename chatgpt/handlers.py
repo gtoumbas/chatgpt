@@ -48,7 +48,7 @@ class FunctionHandler:
     
 
     def create_function_json(self, model):
-        from chat_session import ChatSession
+        from .chat_session import ChatSession
         print("Creating functions.json file...")
         chat = ChatSession(api_key=self.api_key, model=model, system_message=self.example)
 

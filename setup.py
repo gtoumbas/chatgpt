@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),
     description='A simple package to interact with the OpenAI API',
     author='George Toumbas',
-    author_email='gtoumbas23@gmail.com"
+    author_email='gtoumbas23@gmail.com',
     url='https://github.com/yourusername/your-package-name',
     install_requires=[
         'openai',

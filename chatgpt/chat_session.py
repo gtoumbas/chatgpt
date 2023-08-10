@@ -1,6 +1,6 @@
 import openai
 import json
-from handlers import FunctionHandler
+from .handlers import FunctionHandler
 
 
 

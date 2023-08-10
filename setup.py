@@ -10,10 +10,6 @@ setup(
     url='https://github.com/yourusername/your-package-name',
     install_requires=[
         'openai',
-        'json',
-        'importlib',
-        'time',
-        'sys'
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',

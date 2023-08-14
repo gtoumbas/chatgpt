@@ -12,6 +12,7 @@ class ChatSession:
         self.messages = [{"role": "system", "content": system_message}] if system_message else []
         self.example_path = example_path
         self.function_file_paths = function_file_paths
+        self.function_call = {}
         
         if function_file_paths:
             handler = FunctionHandler(api_key, function_file_paths, example_path, overwrite=overwrite)
@@ -58,7 +59,10 @@ class ChatSession:
         if message.get('function_call'):
 
             self.messages.append(message)
-            return message['function_call']
+            # Return as dict
+            return json.loads(response.choices[0]["message"]["function_call"])
+
+
             # function_name = message['function_call'].get('name', None)
             # function_args = message['function_call'].get('arguments', None)
             # if function_args:

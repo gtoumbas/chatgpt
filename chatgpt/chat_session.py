@@ -56,15 +56,18 @@ class ChatSession:
     def handle_normal_response(self, response): # Just returns entire response in text
         message  = response['choices'][0]['message']
         if message.get('function_call'):
-            function_name = message['function_call'].get('name', None)
-            function_args = message['function_call'].get('arguments', None)
-            if function_args:
-                function_args = json.loads(function_args)
-                function_response = str(self.call_function(function_args, function_name))
-                # Appending both message and function response to messages
-                self.messages.append(message)
-                # self.messages.append({"role": "function", "content": function_response, "name": function_name})
-                return message['function_call']
+
+            self.messages.append(message)
+            return message['function_call']
+            # function_name = message['function_call'].get('name', None)
+            # function_args = message['function_call'].get('arguments', None)
+            # if function_args:
+            #     function_args = json.loads(function_args)
+            #     function_response = str(self.call_function(function_args, function_name))
+            #     # Appending both message and function response to messages
+            #     self.messages.append(message)
+            #     # self.messages.append({"role": "function", "content": function_response, "name": function_name})
+            #     return message['function_call']
         else:
             self.messages.append(message)
             return message['content'] 
@@ -146,5 +149,8 @@ class ChatSession:
             sleep(speed)
             sys.stdout.write(char)
             sys.stdout.flush()
+
+
+
 
 

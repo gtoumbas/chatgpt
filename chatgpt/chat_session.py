@@ -63,11 +63,11 @@ class ChatSession:
                 function_response = str(self.call_function(function_args, function_name))
                 # Appending both message and function response to messages
                 self.messages.append(message)
-                self.messages.append({"role": "function", "content": function_response, "name": function_name})
-                return function_response
+                # self.messages.append({"role": "function", "content": function_response, "name": function_name})
+                return message['function_call']
         else:
             self.messages.append(message)
-            return message['content']
+            return message['content'] 
         
     
     def stream_response(self, response, function_for_output):

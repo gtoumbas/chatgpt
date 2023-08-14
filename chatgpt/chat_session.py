@@ -60,7 +60,8 @@ class ChatSession:
 
             self.messages.append(message)
             # Return as dict
-            return json.loads(response.choices[0]["message"]["function_call"])
+            resp = list(response.choices)[0]
+            return resp.to_dict()["message"]["function_call"]
 
 
             # function_name = message['function_call'].get('name', None)
